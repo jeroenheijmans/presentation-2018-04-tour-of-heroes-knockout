@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Tour of Heroes</title>
+        <link rel="stylesheet" href="my-monolithic-styles.css">
+
+        <!-- live reload -->
+        <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script> 
+
+        <!-- knockoutjs -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js" 
+                integrity="sha256-owX7sroiO/O1a7h3a4X29A1g3QgqdNvijRQ7V5TH45M=" 
+                crossorigin="anonymous"></script>
+
+        <script src="my-monolithic-app.js"></script>
+    </head>
+    <body>
+        <h1 data-bind="text: title"></h1>
+    </body>
+</html>
