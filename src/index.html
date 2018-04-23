@@ -16,5 +16,17 @@
     </head>
     <body>
         <h1 data-bind="text: title"></h1>
+
+        <!-- heroes.component -->
+        <h2>
+            <span data-bind="text: hero.name().toUpperCase()"></span>
+            Details
+        </h2>
+        <div><span>id: </span> <span data-bind="text: hero.id"></span></div>
+        <div>
+            <label>name:
+            <input data-bind="textInput: hero.name" placeholder="name">
+            </label>
+        </div>
     </body>
 </html>
