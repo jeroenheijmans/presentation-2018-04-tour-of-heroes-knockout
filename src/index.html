@@ -15,18 +15,32 @@
         <script src="my-monolithic-app.js"></script>
     </head>
     <body>
+
         <h1 data-bind="text: title"></h1>
 
+        <!-- heroes-list.component -->
+        <h2>My Heroes</h2>
+        <ul class="heroes" data-bind="foreach: heroes">
+          <li data-bind="click: $parent.selectHero,
+                         css: { selected: $parent.selectedHero() === $data }">
+            <span class="badge" data-bind="text: id"></span> 
+            <span data-bind="text: name"></span>
+          </li>
+        </ul>
+
         <!-- heroes.component -->
+        <!-- ko with: selectedHero -->
         <h2>
-            <span data-bind="text: hero.name().toUpperCase()"></span>
+            <span data-bind="text: upperName"></span>
             Details
         </h2>
-        <div><span>id: </span> <span data-bind="text: hero.id"></span></div>
+        <div><span>id: </span> <span data-bind="text: id"></span></div>
         <div>
             <label>name:
-            <input data-bind="textInput: hero.name" placeholder="name">
+            <input data-bind="textInput: name" placeholder="name">
             </label>
         </div>
+        <!-- /ko -->
+
     </body>
 </html>

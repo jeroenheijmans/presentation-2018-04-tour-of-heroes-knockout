@@ -1,19 +1,43 @@
 (function() {
     "use strict";
 
-    function Hero(data) {
+    function Hero(model) {
         const self = this;
-        
-        self.id = data.id;
-        self.name = ko.observable(data.name);
+
+        self.id = model.id;
+        self.name = ko.observable(model.name);
+
+        self.upperName = ko.computed(() => self.name().toUpperCase());
     }
+
+    const mockHeroes = [
+        { id: 11, name: 'Mr. Nice' },
+        { id: 12, name: 'Narco' },
+        { id: 13, name: 'Bombasto' },
+        { id: 14, name: 'Celeritas' },
+        { id: 15, name: 'Magneta' },
+        { id: 16, name: 'RubberMan' },
+        { id: 17, name: 'Dynama' },
+        { id: 18, name: 'Dr IQ' },
+        { id: 19, name: 'Magma' },
+        { id: 20, name: 'Tornado' },
+    ];
     
-    const appModel = {
-        title: "Tour of Heroes",
-        hero: new Hero({ id: 1, name: "Windstorm" }),
+    function App(model) {
+        const self = this;
+
+        self.title = "Tour of Heroes";
+        
+        self.heroes = model.mockHeroes.map(data => new Hero(data));
+        
+        self.selectedHero = ko.observable(null);
+
+        self.selectHero = function (hero) {
+            self.selectedHero(hero);
+        };
     };
     
     document.addEventListener("DOMContentLoaded", () => {
-        ko.applyBindings(appModel);
+        ko.applyBindings(new App({ mockHeroes: mockHeroes }));
     });
 }());
