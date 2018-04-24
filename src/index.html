@@ -17,6 +17,7 @@
     <body>
 
         <h1 data-bind="text: title"></h1>
+        <p><a data-bind="href: projectUrl">Project Site</a></p>
 
         <!-- heroes-list.component -->
         <h2>My Heroes</h2>
@@ -34,6 +35,11 @@
             <span data-bind="text: upperName"></span>
             Details
         </h2>
+        <p>
+            <a data-bind="href: googleUrl" target="_blank">
+                Search on Google...
+            </a>
+        </p>
         <div><span>id: </span> <span data-bind="text: id"></span></div>
         <div>
             <label>name:

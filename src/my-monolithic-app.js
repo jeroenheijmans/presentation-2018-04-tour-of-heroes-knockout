@@ -1,6 +1,13 @@
 (function() {
     "use strict";
 
+    // More info on BindingHandlers: http://knockoutjs.com/documentation/custom-bindings.html
+    ko.bindingHandlers['href'] = {
+        update: function(element, valueAccessor) {
+            element.href = ko.utils.unwrapObservable(valueAccessor());
+        }
+    };
+
     function Hero(model) {
         const self = this;
 
@@ -8,6 +15,12 @@
         self.name = ko.observable(model.name);
 
         self.upperName = ko.computed(() => self.name().toUpperCase());
+
+        self.googleUrl = ko.computed(() => {
+            const baseUrl = "https://www.google.com/search";
+            const query = self.name().split(" ").join("+");
+            return `${baseUrl}?q=${query}`
+        });
     }
 
     const mockHeroes = [
@@ -27,6 +40,7 @@
         const self = this;
 
         self.title = "Tour of Heroes";
+        self.projectUrl = "https://github.com/jeroenheijmans/presentation-2018-04-tour-of-heroes-knockout";
         
         self.heroes = model.mockHeroes.map(data => new Hero(data));
         
