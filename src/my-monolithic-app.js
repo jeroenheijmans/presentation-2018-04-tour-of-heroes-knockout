@@ -1,6 +1,17 @@
 (function() {
     "use strict";
 
+    function HeroComponent(params) {
+        const self = this;
+
+        self.hero = params.hero;
+    }
+
+    ko.components.register('app-hero-detail', {
+        template: { element: 'app-hero-detail' },
+        viewModel: HeroComponent,
+    });
+
     function Hero(model) {
         const self = this;
 

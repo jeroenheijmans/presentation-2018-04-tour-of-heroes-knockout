@@ -28,19 +28,24 @@
           </li>
         </ul>
 
+        <!-- Template could be loaded lazily, it's only here for demo purposes: -->
+        <template id="app-hero-detail">
+            <!-- ko with: hero -->
+            <h2>
+                <span data-bind="text: upperName"></span>
+                Details
+            </h2>
+            <div><span>id: </span> <span data-bind="text: id"></span></div>
+            <div>
+                <label>name:
+                <input data-bind="textInput: name" placeholder="name">
+                </label>
+            </div>
+            <!-- /ko -->
+        </template>
+
         <!-- heroes.component -->
-        <!-- ko with: selectedHero -->
-        <h2>
-            <span data-bind="text: upperName"></span>
-            Details
-        </h2>
-        <div><span>id: </span> <span data-bind="text: id"></span></div>
-        <div>
-            <label>name:
-            <input data-bind="textInput: name" placeholder="name">
-            </label>
-        </div>
-        <!-- /ko -->
+        <app-hero-detail params="hero: selectedHero"></app-hero-detail>
 
     </body>
 </html>
